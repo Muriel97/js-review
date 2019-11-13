@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>async-Promise</title>
+</head>
+<body>
+  <script>
+    const promise = new Promise(function(resolve, reject) {
+      let value = 1
+      if (true) {
+        console.log(value)
+        resolve(value);
+      } else {
+        reject(error);
+      }
+    })
+    // resolve：将异步的执行从pending(请求)变成了resolve(成功返回)，是个函数执行返回。
+    // reject：顾名思义“拒绝”，就是从请求变成了"失败"，是个函数可以执行返回一个结果，但我们这里推荐大家返回一个错误new Error()。
+
+    console.log(promise)
+    // Promise
+    // __proto__: Promise
+    // [[PromiseStatus]]: "resolved"
+    // [[PromiseValue]]: 1
+
+
+    // 每一个then返回一个新的promise
+    getJSON("/posts.json").then(function(json) {
+      return json.post
+    }).then(function(post) {
+      // ...
+    })
+
+
+    // async/await
+    // 它就是 Generator 函数的语法糖。
+    // 可以结合promise 使用。
+    // async函数返回一个 Promise 对象，可以使用then方法添加回调函数。
+    // 当函数执行的时候，一旦遇到await就会先返回，去处理其他操作，等到异步操作完成，再接着执行函数体内后面的语句。
+    // async函数返回一个 Promise 对象。
+    // async函数内部return语句返回的值，会成为then方法回调函数的参数。
+  </script>
+</body>
+</html>
