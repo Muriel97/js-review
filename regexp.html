@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>regexp-正则</title>
+</head>
+<body>
+<script>
+  // var regex = new RegExp('zm', 'i')
+  // 等价于
+  // var regex = /zm/i
+  // 等价于
+  // var regex = new RegExp(/zm/i)
+
+
+  var regex = new RegExp(/xyz/ig, 'i') // ig会被i覆盖，es5不能使用
+  console.log(regex.flags) // i  返回正则表达式的修饰符
+
+  const txt="hello world!"
+
+  // search() stringObject 中第一个与 regexp 相匹配的子串的起始位置。如果没有找到任何匹配的子串，则返回 -1
+  console.log(txt.search('world')) // 6
+
+  // march() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配
+  console.log(txt.match(/world/g)) // ['world']
+
+  // replace() 用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+  console.log(txt.replace(/world/,"JavaScript")) // hello JavaScript!
+  console.log(txt) // hello world! 不会改变原来的值
+
+  // split() 字符串或正则表达式，从该参数指定的地方分割
+  console.log(txt.split("")) // ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
+  console.log(txt.split(" ", 1)) // ["hello"]
+
+
+  // u 修饰符（Unicode模式）
+  console.log(/^\uD83D/u.test('\uD83D\uDC2A')) // false
+  console.log(/^\uD83D/.test('\uD83D\uDC2A')) // true
+
+  // 点（.）字符在正则表达式中，含义是除了换行符以外的任意单个字符。对于码点大于0xFFFF的 Unicode 字符，点字符不能识别，必须加上u修饰符。
+  const s = '𠮷'
+
+  console.log(/^.$/.test(s)) // false 正则表达式认为字符串为两个字符，从而匹配失败。
+  console.log(/^.$/u.test(s)) // true
+
+  // unicode属性，表示是否设置了u修饰符
+  const r1 = /hello/;
+  const r2 = /hello/u;
+
+  console.log(r1.unicode) // false
+  console.log(r2.unicode) // true
+
+</script>
+</body>
+</html>
