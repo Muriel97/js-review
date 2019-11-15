@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Number</title>
+</head>
+<body>
+<script>
+  console.log(0b111110111) // 503 0b(0B):二进制
+  console.log(0o767) // 503 0o(0O):八进制
+  console.log(Number('0b111')) // 7
+
+  // 非严格模式
+  console.log(0o11 === 011)
+
+  // 严格模式(从 ES5 开始，在严格模式之中，八进制就不再允许使用前缀0表示)
+  // (function(){
+  //   'use strict'
+  //   console.log(0o11 === 011) // Uncaught SyntaxError: Octal literals are not allowed in strict mode.
+  // })()
+
+
+  // 它们与传统的全局方法isFinite()和isNaN()的区别在于，传统方法先调用Number()将非数值的值转为数值，再进行判断
+  // 而这两个新方法只对数值有效，Number.isFinite()对于非数值一律返回false, Number.isNaN()只有对于NaN才返回true，非NaN一律返回false。
+  // isFinite() 函数用于检测指定参数是否为无穷大。
+  console.log(isFinite(25)) // true
+  console.log(Number.isFinite(10/3)) // true
+  // 提示： 如果 number 是 NaN（非数字），或者是正、负无穷大的数，则返回 false。
+
+  console.log(isNaN(NaN)) // true
+  console.log(Number.isNaN(NaN)) // true
+  // true
+  console.log(Number.isNaN('true' / 'true'))
+
+  // 判断是不是整数
+  console.log(Number.isInteger(25.0)) // true 25.0 = 25
+</script>
+</body>
+</html>
