@@ -36,6 +36,21 @@
 
   // 判断是不是整数
   console.log(Number.isInteger(25.0)) // true 25.0 = 25
+  console.log(Number.isInteger(3.0000000000000002)) // true 丢失精度
+
+  // es5
+  console.log(parseInt('12.23')) // 12 转换为整数
+  console.log(parseFloat('123.45#')) // 123.45 转换为浮点数
+
+  // es6
+  console.log(Number.parseInt('12.34')) // 12
+  console.log(Number.parseFloat('123.45#')) // 123.45
+
+  // 逐步减少全局性方法，使得语言逐步模块化
+  Number.parseInt === parseInt // true
+  Number.parseFloat === parseFloat // true
+
+  console.log(0.1 + 0.2) // 0.30000000000000004
 </script>
 </body>
 </html>
