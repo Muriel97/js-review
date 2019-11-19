@@ -63,14 +63,14 @@
   // (function (a, b, c = 5) {}).length // 2
 
 
-  function f(y = a) {
-    let a = 2
-    console.log(y)
-  }
+  // function f(y = a) {
+  //   let a = 2
+  //   console.log(y)
+  // }
 
-  f() // 报错 let的作用域 a is not defined
+  // f() // 报错 let的作用域 a is not defined
 
-  var b= 1;
+  // var b= 1;
   // 实际上参数是 let b = b
   // function foo(b = b) {
   //   // ...
@@ -78,6 +78,24 @@
 
   // foo() // Cannot access 'b' before initialization
 
+
+  let fu = 'outer'
+  // 参数中func是个匿名函数，取的值是外层的全局定义的fu的值，内部定义外部调用不到
+  function bar(func = () => fu) {
+    let fu = 'inner'
+    console.log(func())
+  }
+
+  bar() // outer
+
+  var bb = 1;
+  function foo(bb, y = function() { bb = 2;console.log(bb) }) { // 2 y的作用域下是2
+    var bb = 3
+    y()
+    console.log(bb)
+  }
+
+  foo() // 3 foo的作用域下是2
 
 </script>
 </body>

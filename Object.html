@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object-拷贝</title>
+</head>
+<body>
+  <script>
+    let a = { a: 1, c: { d: 1 }, d: [1], a: function() {}, b: new Set([]), e: Symbol('das')}
+    let b = { b: 1, a: 2, ...a }
+    b.c.d = 3 // ...只拷贝第一层的内容，第二层是直接浅拷贝，改变值也会影响之前的值，类似于Object.assign
+    console.log(b, a)
+
+    let x = { x: 1, y: 2 }
+    let y = { x: 2, z: 3 }
+    // let z = Object.assign(x, y)
+    // console.log(x, y, z) // x会改变值，y不会
+    let m = Object.assign({}, x, y)
+    console.log(x, y, m) // x,y不会改变值
+  </script>
+</body>
+</html>
