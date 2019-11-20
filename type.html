@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>type</title>
+</head>
+<body>
+<script>
+  //  JavaScript 数据类型：基本类型值和引用类型值。
+  // 基础类型(简单的数据段)：Undefined、Null、Boolean、Number、String、Symbol
+  // 引用类型(那些可能由多个值构成的对象)：object，就这一种，包括javascript中的数组，正则等，其类型都是object类型。function也属于对象
+  var func = () => {return null;}
+  typeof(func) // function
+  typeof 123 // "number"
+  typeof 'abc' // "string"
+  typeof false // "boolean"
+  typeof undefined // "undefined"
+  typeof {} // "object"
+  function f() {}  // "function"
+  typeof null // "object"
+
+  console.log(null == undefined) //true console.log(null===undefined)//false
+
+  // 前置逻辑运算符： ! (Not)  undefined、null、false、0、NaN、"" 或 ''（空字符串）非这些则返回true
+
+
+  // JavaScript 浮点数的 64 个二进制位组成
+  Math.pow(2, 53) // 9007199254740992 JavaScript 对 15 位的十进制数都可以精确处理
+
+  9007199254740992111 // 9007199254740992000 大于 2 的 53 次方以后，多出来的有效数字都会无法保存，变成 0.
+
+  Math.pow(2, 1024)     // Infinity
+
+  0 / 0   // NaN
+  1 / 0   // Infinity
+
+  // Base64 是一种编码方法，可以将任意值转成 0～9、A～Z、a-z、+和/这64个字符组成的可打印字符。使不出现特殊字符，简化程序的处理
+  var string = 'Hello World!';
+  btoa(string) // "SGVsbG8gV29ybGQh" 转换成Base64
+  atob('SGVsbG8gV29ybGQh') // "Hello World!" Base64 编码转为原来的值
+</script>
+</body>
+</html>
