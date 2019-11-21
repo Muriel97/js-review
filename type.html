@@ -20,8 +20,9 @@
   typeof {} // "object"
   function f() {}  // "function"
   typeof null // "object"
+  // 在使用 typeof 运算符时采用引用类型存储值会出现一个问题，无论引用的是什么类型的对象，它都返回 "object"。
 
-  console.log(null == undefined) //true console.log(null===undefined)//false
+  // console.log(null == undefined) //true console.log(null===undefined)//false
 
   // 前置逻辑运算符： ! (Not)  undefined、null、false、0、NaN、"" 或 ''（空字符串）非这些则返回true
 
@@ -40,6 +41,42 @@
   var string = 'Hello World!';
   btoa(string) // "SGVsbG8gV29ybGQh" 转换成Base64
   atob('SGVsbG8gV29ybGQh') // "Hello World!" Base64 编码转为原来的值
+
+  var str = "This is a simple string";
+  var num = 1111;
+  var boolean = true;
+  var und = undefined;
+  var nl = null;
+  var sb = Symbol('1111');
+  var obj = {}; // 非原始类型数据字面量定义
+
+  // console.log(str instanceof String) // false
+  // console.log(num instanceof Number) // false
+  // console.log(boolean instanceof Boolean) // false
+  // console.log(nl instanceof Object) // false
+  // console.log(sb instanceof Symbol) // false
+  // console.log(obj instanceof Object) // true 检测引用类型的值使用
+
+  // 检测构造函数的 prototype 属性是否出现在某个实例对象的原型链
+  var strN = new String("This is a simple string");
+  var numN = new Number(1111);
+  var booleanN = new Boolean(true);
+  var objN = new Object();
+
+  // console.log(strN instanceof String) // true
+  // console.log(numN instanceof Number) // true
+  // console.log(booleanN instanceof Boolean) // true
+  // console.log(objN instanceof Object) // true
+
+  // 判断 foo 是否是 Foo 类的实例 , 并且是否是其父类型的实例
+  function Aoo(){}
+  function Foo(){}
+  Foo.prototype = new Aoo() // JavaScript 原型继承
+  // instanceof 可以在继承关系中用来判断一个实例是否属于它的父类型
+  var foo = new Foo();
+  console.log(foo instanceof Foo) // true
+  console.log(foo instanceof Aoo) // true
+
 </script>
 </body>
 </html>

@@ -19,6 +19,31 @@
     // console.log(x, y, z) // x会改变值，y不会
     let m = Object.assign({}, x, y)
     console.log(x, y, m) // x,y不会改变值
+
+
+    var person = {
+      name: 'Frank',
+      age: 26,
+      gender: 'female',
+      married: true,
+      children: {name: 'Micle',age: 3} ,    // 键值也可以为对象
+      '': 'Frank' ,                          // 属性名也可以为空字符串
+      '9a':'Frank'
+    }
+
+    person['name'] // Frank  === person.name
+
+    Object.keys(person) //  ["name", "age", "gender", "married", "children", "", "9a"]
+
+    var obj = {
+      123: 'Hello' // 使用方括号运算符，可以不加引号，因为会自动转成字符串
+    };
+
+    // 报错 obj.123
+    obj['123'] // "Hello"
+    obj[123]  // "Hello"
+
+
   </script>
 </body>
 </html>
