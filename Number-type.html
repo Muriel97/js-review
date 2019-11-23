@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Number-type</title>
+</head>
+<body>
+<script>
+  // isNaN判断参数是否为数字，是则返回false，否则返回true
+  console.log(isNaN(NaN)) // true NaN和任何值都不相等，包括它自己本身 NaN时属于number类型的。
+  console.log(isNaN("123")) // false
+  console.log(isNaN(123)) // false
+  console.log(isNaN("hello")) // true
+  console.log(isNaN(true)) // false
+
+  // 三个函数可以将非数值的数据转为数值。
+　// 分别是：Number（），parse Int（）转为整数，parseFloat（）转为浮点数，小数
+
+  // Number 可以将非数值转为数值
+  Number(true) // 1 false-0  null-0 undefined-null ""-0
+  Number("123Hello") // NaN
+  Number("0xf") // 15
+  Number("012") // 12 十进制
+  Number("0o10") // 8 八进制
+  Number("0b111") // 7 二进制
+  Number("3.14") // 3.14 小数
+
+  Number.parseInt(3.14) // 3 es6语法 es6之前是parseInt()
+
+  Number.parseFloat("12.34#") // 12.34 es6语法 es6之前是parseFloat()
+
+  // toFixed(N)函数用于保留小数点，n的范围为0-20
+  let num = 10.456
+  console.log(num.toFixed(2)) // 10.46
+  console.log(num.toFixed()) // 10
+  console.log(num.toFixed(0)) // 10
+  console.log(num.toFixed(undefined)) // 10
+  console.log(num.toFixed(-1)) // 报错
+</script>
+</body>
+</html>
