@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sentence</title>
+</head>
+<body>
+<script>
+// if
+function ifFun (i) {
+  if (i > 5) {
+    console.log(10)
+  } else if (i === 5) {
+    console.log(5)
+  } else {
+    console.log(0)
+  }
+}
+
+// do-while 循环 只要满足while的条件就会一直执行do中的语句，一定会执行一次，第一次不用判断条件
+let i = 0, j = 0
+do {
+  i+=2
+} while (i < 10) // 10
+// while 语句 与do-while的区别是可能不会被执行，每一次都会判断条件
+while (j < 10) {
+  j+=2
+} // 10
+
+// for 循环语句 与while相似，不用初始化循环变量
+let count = 10
+for (x = 0; x < count; x++) { // 此处用let声明则外部访问不到  var或者不用变量，则没有块级作用域
+  console.log(x)
+}
+console.log('2111', x) // 能输出
+
+// for-in
+// for (i in window) {
+//   console.log(window[i])
+// }
+
+start: for (y = 0; y < count; y++) {
+  console.log(y)
+}
+
+</script>
+</body>
+</html>
