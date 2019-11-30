@@ -45,6 +45,23 @@ start: for (y = 0; y < count; y++) {
   console.log(y)
 }
 
+// with语句 将代码的作用域设置到一个特定对象
+with (location) {
+  var qs = search.substring(1)
+  var hash = hash
+  var url = href
+}
+
+let { hash, href: url } = location // 与with作用比较类似
+
+// switch适用于处理多值的if
+switch (i) {
+  case 1:
+  case 3:console.log(1); break;
+  case 2: console.log(2); break;
+  default: console.log(1111);
+}
+
 </script>
 </body>
 </html>
