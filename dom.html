@@ -7,14 +7,37 @@
   <title>dom</title>
 </head>
 <body>
-  <ul>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
+  <ul id="tree">
+    <li class="li">1</li>
+    <li class="li">2</li>
+    <li class="li">3</li>
   </ul>
 <script>
 // Dom-文档对象模型 以树结构表达html文档
 // Node类型 节点 子节点、父节点、兄弟节点等
+  console.log(document.getElementById('tree')) // 通过唯一的id来搜索 所以是element
+  console.log(document.getElementsByTagName('li').length) // 3 通过tagname来搜索 是个集合 所以是elements
+  console.log(document.getElementsByClassName('li').length) // 3 通过样式名来搜索 是个集合 所以是elements
+  let tree = document.getElementById('tree')
+  let node = document.createElement("li") // 创建新的元素节点
+  let node1 = document.createElement("li") // 创建新的元素节点
+  var attr = document.createAttribute("li") // 创建新的属性节点
+  var btn = document.createTextNode("Hello World") // 创建新的文本节点
+  node.innerHTML = 4
+  node1.innerHTML = 5
+  node1.setAttributeNode(attr) // 添加新的属性节点
+  tree.appendChild(node)
+  tree.replaceChild(node1, node) // 用node1替换node
+  tree.insertBefore(node, node1) // 在node1前面插入node
+  tree.insertBefore(btn, node1)
+
+  console.log(document.getElementsByTagName("li")[0].getAttribute("class")) // li 获取属性名的属性值
+  document.getElementsByTagName("li")[0].setAttribute('class', 'lis') // 修改属性名的属性值
+  console.log(document.getElementsByTagName("li")[0].getAttribute("class")) // lis 获取属性名的属性值
+
+  // setTimeout(() => {
+  //   document.getElementById('tree').removeChild(node)
+  // }, 1000)
 
 </script>
 </body>
