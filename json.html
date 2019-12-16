@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JSON</title>
+</head>
+<body>
+<script>
+  let book = {
+    title: '111,1',
+    authors: ['111', '222'],
+    year: 2001,
+    date: new Date(2001, 11, 1)
+  }
+  let strBook = JSON.stringify(book) // 转成字符串
+  // console.log(JSON.parse(strBook)) // 转成对象
+  let copy = JSON.parse(strBook, (key, value) => {
+    if (key === 'date') return new Date(value)
+    return value
+  })
+  console.log(copy) // {title: "111,1", authors: Array(2), year: 2001, date: Sat Dec 01 2001 00:00:00 GMT+0800 (中国标准时间)}
+  // console.log(JSON.stringify(book, ['title', 'authors'])) // {"title":"111","authors":["111"]} 只会转制定项
+  let jsonText = JSON.stringify(book, (key, value) => { // 函数过滤器
+    switch (key) {
+      case 'title':
+        return value.split(',')
+      case 'authors':
+        return value.join(',')
+      case 'year':
+        return 1111
+      default: return value
+    }
+  })
+  // console.log(jsonText) // {"title":["111","1"],"authors":"111,222","year":1111}
+  // console.log(JSON.stringify(book, null, 2)) // 2个缩进
+  // {
+  //   "title": "111,1",
+  //   "authors": [
+  //     "111",
+  //     "222"
+  //   ],
+  //   "year": 2001
+  // }
+
+  // console.log(JSON.stringify(book, null, '--')) // 讲缩进设置为制表符
+  // {
+  // --"title": "111,1",
+  // --"authors": [
+  // ----"111",
+  // ----"222"
+  // --],
+  // --"year": 2001
+  // }
+</script>
+</body>
+</html>
